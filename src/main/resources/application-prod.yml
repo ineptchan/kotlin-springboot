@@ -1,0 +1,14 @@
+com:
+  moon:
+    datasource:
+      host: 127.0.0.1
+      port: 5432
+      database: moon
+      username: user
+      password: 123456
+    server:
+      port: 8080
+    jwt:
+      adminSecretKey: yourSecretKey
+      adminTtl: 36000000
+      adminTokenName: token
