@@ -9,16 +9,19 @@ data class Result<T>(
 ) : Serializable {
 
     companion object {
+        const val SUCCESS = 0
+        const val FAILURE = 1
+
         /**
          * 只返回成功，不带数据
          */
-        fun <T> success(data: T): Result<T> = Result(code = 0, data = data)
+        fun <T> success(data: T): Result<T> = Result(code = SUCCESS, data = data)
 
         /**
          * 只返回错误信息
          */
-        fun <T> error(msg: String): Result<T> = Result(code = 1, msg = msg)
+        fun <T> error(msg: String): Result<T> = Result(code = FAILURE, msg = msg)
 
-        fun <T> error(msg: String, data: T): Result<T> = Result(code = 1, msg = msg, data = data)
+        fun <T> error(msg: String, data: T): Result<T> = Result(code = FAILURE, msg = msg, data = data)
     }
 }
