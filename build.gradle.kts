@@ -32,8 +32,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     //jwt
-    implementation("io.jsonwebtoken:jjwt:0.9.1")
-    implementation("javax.xml.bind:jaxb-api:2.3.1")
+    implementation("io.jsonwebtoken:jjwt:0.12.6")
 }
 
 kotlin {
