@@ -12,3 +12,7 @@ com:
       adminSecretKey: 0Fv5p6icCcy6wg+M1oRDx+P1XQi/MKm78mcflMFwoOR/Feo2NHizhSf3OxQKD/63cGR/GiFzD4uzZSWkvKvPXg== #openssl rand -base64 64
       adminTtlHours: 168
       adminTokenName: token
+
+      userSecretKey: 0Fv5p6icCcy6wg+M1oRDx+P1XQi/MKm78mcflMFwoOR/Feo2NHizhSf3OxQKD/63cGR/GiFzD4uzZSWkvKvPXg== #openssl rand -base64 64
+      userTtlHours: 168
+      userTokenName: token

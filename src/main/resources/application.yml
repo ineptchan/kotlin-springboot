@@ -27,3 +27,7 @@ com:
       adminSecretKey: ${com.moon.jwt.adminSecretKey}
       adminTtlHours: ${com.moon.jwt.adminTtlHours}
       adminTokenName: ${com.moon.jwt.adminTokenName}
+
+      userSecretKey: ${com.moon.jwt.userSecretKey}
+      userTtlHours: ${com.moon.jwt.userTtlHours}
+      userTokenName: ${com.moon.jwt.userTokenName}

@@ -29,13 +29,13 @@ class JwtTokenAdminInterceptor(
         //从请求头中获取令牌
         val token = request.getHeader(jwtProperties.adminTokenName)
 
-        val jwtClaims = JwtUtil.parseAdminJWT(
+        val jwtClaims = JwtUtil.parseJWT(
             secretKey = jwtProperties.adminSecretKey,
             token = token
         )
 
         if (jwtClaims != null) {
-            val id = jwtClaims.payload.get(JwtClaimsConstant.ADMIN_ID).toString().toLongOrNull()
+            val id = jwtClaims.payload.get(JwtClaimsConstant.ID).toString().toLongOrNull()
 
             if (id != null) {
                 BaseContext.setCurrentId(id)

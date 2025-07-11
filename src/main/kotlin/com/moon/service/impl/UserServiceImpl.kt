@@ -69,10 +69,10 @@ class UserServiceImpl(
 
         //生成token
         val payload = HashMap<String, Any>()
-        payload.put(JwtClaimsConstant.ADMIN_ID, dbUser.id)
-        payload.put(JwtClaimsConstant.ADMIN_NAME, dbUser.username)
+        payload.put(JwtClaimsConstant.ID, dbUser.id)
+        payload.put(JwtClaimsConstant.NAME, dbUser.username)
 
-        val token = JwtUtil.createAdminJWT(
+        val token = JwtUtil.createJWT(
             secretKey = jwtProperties.adminSecretKey,
             ttlHours = jwtProperties.adminTtlHours,
             claims = payload
