@@ -4,10 +4,10 @@ import com.moon.base.Result
 import com.moon.constant.UserConstant
 import com.moon.convert.toUser
 import com.moon.convert.toUserVO
-import com.moon.pojo.dto.UserDTO
-import com.moon.pojo.dto.UserLoginDTO
-import com.moon.pojo.vo.UserLoginVO
-import com.moon.pojo.vo.UserVO
+import com.moon.pojo.dto.UserDto
+import com.moon.pojo.dto.LoginUserDto
+import com.moon.pojo.vo.LoginUserVo
+import com.moon.pojo.vo.UserVo
 import com.moon.service.UserService
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -23,7 +23,7 @@ class UserController(
      * @return
      */
     @GetMapping
-    fun getUsers(): Result<List<UserVO>> {
+    fun getUsers(): Result<List<UserVo>> {
         val users = userService.getUsers().map { it.toUserVO() }
         return Result.Companion.success(users)
     }
@@ -35,7 +35,7 @@ class UserController(
      * @return
      */
     @GetMapping("/{id}")
-    fun getUserById(@PathVariable id: Long): Result<UserVO> {
+    fun getUserById(@PathVariable id: Long): Result<UserVo> {
         val user = userService.getUserById(id)
         if (user == null) {
             throw Exception(UserConstant.USER_NOT_FOUND)
@@ -50,7 +50,7 @@ class UserController(
      * @return
      */
     @PostMapping
-    fun createUser(@Validated @RequestBody user: UserDTO): UserVO {
+    fun createUser(@Validated @RequestBody user: UserDto): UserVo {
         val user = userService.createUser(user.toUser())
         return user.toUserVO()
     }
@@ -62,7 +62,7 @@ class UserController(
      * @return
      */
     @PutMapping
-    fun updateUser(@Validated @RequestBody user: UserDTO): UserVO {
+    fun updateUser(@Validated @RequestBody user: UserDto): UserVo {
         val user = userService.updateUser(user.toUser())
         return user.toUserVO()
     }
@@ -80,12 +80,12 @@ class UserController(
     /**
      * 登录
      *
-     * @param userLoginDTO
+     * @param loginUserDto
      * @return
      */
     @GetMapping("/login")
-    fun login(@Validated @RequestBody userLoginDTO: UserLoginDTO): Result<UserLoginVO> {
-        val userLoginVO = userService.loginUser(userLoginDTO)
+    fun login(@Validated @RequestBody loginUserDto: LoginUserDto): Result<LoginUserVo> {
+        val userLoginVO = userService.loginUser(loginUserDto)
         return Result.success(userLoginVO)
     }
 }

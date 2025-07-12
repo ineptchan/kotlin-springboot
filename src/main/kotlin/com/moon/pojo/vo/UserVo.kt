@@ -1,6 +1,6 @@
 package com.moon.pojo.vo
 
-data class UserVO(
+data class UserVo(
     val id: Long = 0,
     val username: String,
 )

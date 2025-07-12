@@ -2,9 +2,9 @@ package com.moon.service.impl
 
 import com.moon.constant.JwtClaimsConstant
 import com.moon.constant.UserConstant
-import com.moon.pojo.dto.UserLoginDTO
+import com.moon.pojo.dto.LoginUserDto
 import com.moon.pojo.entity.User
-import com.moon.pojo.vo.UserLoginVO
+import com.moon.pojo.vo.LoginUserVo
 import com.moon.properties.JwtProperties
 import com.moon.repository.UserRepository
 import com.moon.service.UserService
@@ -55,15 +55,15 @@ class UserServiceImpl(
 
     override fun deleteUserById(id: Long) = userRepository.deleteById(id)
 
-    override fun loginUser(userLoginDTO: UserLoginDTO): UserLoginVO {
-        val dbUser = userRepository.findByUsername(userLoginDTO.username)
+    override fun loginUser(loginUserDto: LoginUserDto): LoginUserVo {
+        val dbUser = userRepository.findByUsername(loginUserDto.username)
         //没有用户
         if (dbUser == null) {
             throw Exception(UserConstant.USERNAME_OR_PASSWORD_ERROR)
         }
 
         //密码错误
-        if (dbUser.password != PasswordUtil.formatPassword(userLoginDTO.password)) {
+        if (dbUser.password != PasswordUtil.formatPassword(loginUserDto.password)) {
             throw Exception(UserConstant.USERNAME_OR_PASSWORD_ERROR)
         }
 
@@ -78,7 +78,7 @@ class UserServiceImpl(
             claims = payload
         )
 
-        return UserLoginVO(
+        return LoginUserVo(
             id = dbUser.id,
             username = dbUser.username,
             token = token

@@ -4,7 +4,7 @@ import com.moon.pojo.validated.ValidUsername
 import com.moon.pojo.validated.ValidatedPassword
 import jakarta.validation.constraints.PositiveOrZero
 
-data class UserDTO(
+data class UserDto(
     @field:PositiveOrZero(message = "错误的id")
     val id: Long = 0,
 
